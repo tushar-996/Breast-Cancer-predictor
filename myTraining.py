@@ -1,19 +1,15 @@
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
-<<<<<<< HEAD
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
-=======
->>>>>>> 447f8cb7052d1bf3a626d19db087db50a2f0f4c5
 import pickle
 
 
 
-<<<<<<< HEAD
 def data_split(data):
 
     data = data.iloc[:, 0:32]
@@ -33,26 +29,6 @@ if __name__ == "__main__":
     X_train, X_test, Y_train, Y_test = data_split(df)
 
     clf = LogisticRegression(random_state=0)
-=======
-def data_split(data, ratio):
-    np.random.seed(42)
-    shuffled = np.random.permutation(len(data))
-    test_set_size = int(len(data) * ratio)
-    test_indices = shuffled[:test_set_size]
-    train_indices = shuffled[test_set_size:]
-    return data.iloc[train_indices], data.iloc[test_indices]
-
-if __name__ == "__main__":
-    df = pd.read_csv('data.csv')
-    train, test = data_split(df, 0.2)
-    X_train = train[['fever', 'bodyPain', 'age', 'runnyNose', 'diffBreath']].to_numpy()
-    X_test = test[['fever', 'bodyPain', 'age', 'runnyNose', 'diffBreath']].to_numpy()
-
-    Y_train = train[['infectionProb']].to_numpy().reshape(2000,)
-    Y_test = test[['infectionProb']].to_numpy().reshape(499, )
-
-    clf = LogisticRegression()
->>>>>>> 447f8cb7052d1bf3a626d19db087db50a2f0f4c5
     clf.fit(X_train, Y_train)
 
     # open a file, where you ant to store the data
